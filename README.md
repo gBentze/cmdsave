@@ -98,4 +98,9 @@ Private Sub Form_Load()
     Call MdlLogin.fuelleKombinationsfeld
 End Sub
 
+#################################################################################################################
+SELECT tblMitarbeiter.StammNr, tblMitarbeiter.Nachname, tblMitarbeiter.Vorname, tblMitarbeiter.DKXKennung, tblMitarbeiter.Email, tblRechtseinheit.RE, tblMitKreis.MitKreis, tblKostenstelle.Kostenstelle, tblFzgGrp.FzgGrp, tblAbteilung.Abteilung, tblAbteilung.Abteilung
+FROM tblAbteilung INNER JOIN ((tblKostenstelle INNER JOIN (tblMitKreis INNER JOIN (tblRechtseinheit INNER JOIN tblMitarbeiter ON tblRechtseinheit.REID = tblMitarbeiter.REID) ON tblMitKreis.MitKrID = tblMitarbeiter.MitKreisID) ON tblKostenstelle.KstID = tblMitarbeiter.KstID) INNER JOIN (tblFzgGrp INNER JOIN tblVerknuepftMit_FzgGrp ON tblFzgGrp.FzgGrpID = tblVerknuepftMit_FzgGrp.FzgGrpID) ON tblMitarbeiter.MitID = tblVerknuepftMit_FzgGrp.MitID) ON tblAbteilung.AbtID = tblKostenstelle.AbtID;
+
+
 
